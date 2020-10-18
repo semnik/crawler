@@ -1,0 +1,11 @@
+{
+  "postgres": {
+    "host": "localhost:5436",
+    "database": "postgres",
+
+    "user": "postgres",
+    "password": "postgres"
+  },
+  "START_URL": "https://github.com/semnik",
+  "THREAD_WORKERS_AMOUNT": 5
+}
