@@ -8,10 +8,6 @@ import pytz as pytz
 
 CONFIG_FILENAME = 'config.json'
 
-
-
-
-
 try:
     with open(CONFIG_FILENAME, 'r', encoding='utf-8') as f:
         CONFIG_JSON = json.load(f)
@@ -21,19 +17,13 @@ except Exception as exc:
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
-
-
-
 LOG_DIR = os.path.join(PROJECT_DIR, 'log')
 DEBUG_DIR = os.path.join(PROJECT_DIR, 'debug')
 TIMEZONE = pytz.timezone('Europe/Moscow')
 
-
 str_now_time = datetime.datetime.now(TIMEZONE).strftime('%Y_%m_%d_%H_%M')
 
 log_file_path = os.path.join(LOG_DIR, str_now_time + 'crawler.log')
-
 
 THREAD_WORKERS_AMOUNT = CONFIG_JSON['THREAD_WORKERS_AMOUNT']
 START_URL = CONFIG_JSON['START_URL']
