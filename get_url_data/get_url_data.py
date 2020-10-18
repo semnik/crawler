@@ -1,18 +1,11 @@
-import itertools
-import traceback
-from concurrent.futures import ThreadPoolExecutor
+from typing import Set
 from typing import Set
 from urllib.parse import urlparse, urljoin
 
 import requests
-import sqlalchemy
 from bs4 import BeautifulSoup
 
-from model import Url, db_session, init_db_session, db_session_list, \
-    update_parsed_flag
-from model.url import add_url
-from settings import START_URL, THREAD_WORKERS_AMOUNT
-from settings import print, log
+from settings import log
 
 
 def get_request_data(url: str) -> requests.Response:

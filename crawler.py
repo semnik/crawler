@@ -1,18 +1,11 @@
-import itertools
 import traceback
 from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import urlparse, urljoin
-
-import requests
-import sqlalchemy
-from bs4 import BeautifulSoup
 
 from model import Url, db_session, init_db_session, db_session_list, \
     update_parsed_flag, batch_iter
 from model.url import add_url
 from settings import START_URL, THREAD_WORKERS_AMOUNT, log
-from settings import print
-from get_url_data import get_all_website_links
+from get_url_data.get_url_data import get_all_website_links
 
 
 def threads_worker(sqlalchemy_objects_list):
