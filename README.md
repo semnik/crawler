@@ -30,6 +30,7 @@
 машинах.
 
 #Запуск
+Python 3.6
 
 docker-compose up 
 
