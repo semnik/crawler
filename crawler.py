@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 from model import Url, db_session, init_db_session, db_session_list, \
     update_parsed_flag, batch_iter
 from model.url import add_url
-from settings import START_URL, THREAD_WORKERS_AMOUNT, log
+from settings import START_URL, THREAD_WORKERS_AMOUNT, POSTGRES_ROWS_BATCH_SIZE, log
 from get_url_data.get_url_data import get_all_website_links
 
 
@@ -30,7 +30,7 @@ def threads_worker(sqlalchemy_objects_list):
 
 
 if __name__ == "__main__":
-    POSTGRES_ROWS_BATCH_SIZE = 100
+
     CRAWLER_VERSION = "0.9"
 
     log.debug(f'crawler version - {CRAWLER_VERSION}')
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     add_url(url=START_URL, db_session=db_session)
 
     while True:
-        ad_records_iterable = Url.yield_not_parsed_urls(
+        urls_iterable = Url.yield_not_parsed_urls(
             session=db_session_list)
         log.debug('start iteration')
 
@@ -50,4 +50,4 @@ if __name__ == "__main__":
              for sqlalchemy_urls_list in
              batch_iter(int(POSTGRES_ROWS_BATCH_SIZE /
                             THREAD_WORKERS_AMOUNT),
-                        ad_records_iterable)]
+                        urls_iterable)]

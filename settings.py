@@ -24,6 +24,7 @@ TIMEZONE = pytz.timezone('Europe/Moscow')
 str_now_time = datetime.datetime.now(TIMEZONE).strftime('%Y_%m_%d_%H_%M')
 
 log_file_path = os.path.join(LOG_DIR, str_now_time + 'crawler.log')
+POSTGRES_ROWS_BATCH_SIZE = 100
 
 THREAD_WORKERS_AMOUNT = CONFIG_JSON['THREAD_WORKERS_AMOUNT']
 START_URL = CONFIG_JSON['START_URL']

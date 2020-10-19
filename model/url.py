@@ -34,6 +34,15 @@ class Url(Base):
 
         return records_list
 
+    @classmethod
+    def yield_parsed_urls(cls, session: scoped_session,
+                              postres_rows_batch_size: int
+                              = 10):
+        records_list = session.query(cls).filter(
+            cls.get_is_parsed() == True).yield_per(postres_rows_batch_size)
+
+        return records_list
+
 
 def add_url(url: str, db_session: scoped_session):
     new_url = Url(url=url, is_parsed=False)
