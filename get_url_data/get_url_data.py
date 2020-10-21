@@ -1,5 +1,4 @@
 from typing import Set
-from typing import Set
 from urllib.parse import urlparse, urljoin
 
 import requests
@@ -7,6 +6,8 @@ from bs4 import BeautifulSoup
 
 from settings import log
 
+
+#TODO special class which contains these methods
 
 def get_request_data(url: str) -> requests.Response:
     '''
